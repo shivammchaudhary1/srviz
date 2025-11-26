@@ -1,0 +1,111 @@
+/* Home.module.css */
+
+.homeContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: contrast(80%);
+  z-index: 0;
+}
+
+.heroBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbarContainer {
+  position: relative;
+  z-index: 20;
+}
+
+.mainContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1rem;
+}
+
+.contentWrapper {
+  text-align: center;
+  color: white;
+  max-width: 64rem;
+  width: 100%;
+}
+
+.mainTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+}
+
+@media (min-width: 768px) {
+  .mainTitle {
+    font-size: 3.75rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.ctaButton {
+  background-color: #e86956;
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+
+.ctaButton:hover {
+  background-color: #e86956;
+}
