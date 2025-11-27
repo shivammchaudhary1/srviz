@@ -1,8 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectIsAuthenticated,
+  selectUserName,
+  setLogout,
+} from "../redux/slices/authSlice";
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const userName = useSelector(selectUserName);
   const navItems = ["Home", "About", "Services", "Contact"];
+
+  const handleLogout = () => {
+    dispatch(setLogout());
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -24,8 +38,23 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* CTA Button */}
-          <button className={styles.ctaButton}>Plan My Trip</button>
+          {/* CTA Button or Welcome Message */}
+          {isAuthenticated ? (
+            <div className={styles.welcomeContainer}>
+              <span className={styles.welcomeText}>Welcome, {userName}!</span>
+              <button
+                onClick={handleLogout}
+                className={styles.logoutButton}
+                title="Logout"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/register" className={styles.ctaButtonLink}>
+              <button className={styles.ctaButton}>Plan My Trip</button>
+            </Link>
+          )}
 
           {/* Mobile Menu Button */}
           <button className={styles.mobileMenuButton}>
