@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { notify } from "../utils/notify";
+import { addLeads } from "../redux/slices/leadSlice";
 
 const ContactForm = () => {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -8,76 +13,44 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    // Phone validation
-    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!phoneRegex.test(formData.phone.replace(/[\s\-()]/g, ""))) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
+
+    if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.phone === "" ||
+      formData.message === ""
+    ) {
+      notify({
+        message: "Please fill in all required fields.",
+        status: "error",
+      });
       return;
     }
 
-    setIsSubmitting(true);
-    
+    setIsLoading(true);
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log("Form submitted:", formData);
-      
+      console.log("Contact form submitted:", formData);
+
+      const result = await dispatch(addLeads(formData)).unwrap();
+
+      notify({
+        message:
+          result.message ||
+          "Thank you! Your message has been sent successfully.",
+        status: "success",
+      });
+
       // Reset form on successful submission
       setFormData({
         name: "",
@@ -85,13 +58,20 @@ const ContactForm = () => {
         phone: "",
         message: "",
       });
-      
-      alert("Thank you! Your message has been sent successfully.");
     } catch (error) {
-      console.error("Submission error:", error);
-      alert("Sorry, there was an error sending your message. Please try again.");
+      console.error("Contact form error:", error);
+
+      const errorMessage =
+        error.message ||
+        error.error ||
+        "Sorry, there was an error sending your message. Please try again.";
+
+      notify({
+        message: errorMessage,
+        status: "error",
+      });
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -110,11 +90,9 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleInputChange}
             placeholder="Your Full Name"
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.name ? "border-red-500" : "border-gray-300"
-            }`}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            disabled={isLoading}
           />
-          {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
         </div>
 
         <div>
@@ -127,11 +105,9 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="your.email@example.com"
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            disabled={isLoading}
           />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
 
         <div>
@@ -144,11 +120,9 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleInputChange}
             placeholder="+1234567890"
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
-              errors.phone ? "border-red-500" : "border-gray-300"
-            }`}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            disabled={isLoading}
           />
-          {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
         </div>
 
         <div>
@@ -161,23 +135,47 @@ const ContactForm = () => {
             onChange={handleInputChange}
             placeholder="Tell us about your travel requirements..."
             rows="4"
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none ${
-              errors.message ? "border-red-500" : "border-gray-300"
-            }`}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
+            disabled={isLoading}
           />
-          {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
         </div>
 
         <button
           type="submit"
-          disabled={isSubmitting}
-          className={`w-full py-3 px-4 rounded-md font-semibold uppercase tracking-wide transition-colors duration-300 ${
-            isSubmitting
+          disabled={isLoading}
+          className={`w-full py-3 px-4 rounded-md font-semibold uppercase tracking-wide transition-colors duration-300 text-white ${
+            isLoading
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-orange-500 hover:bg-orange-600"
-          } text-white`}
+          }`}
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          {isLoading ? (
+            <>
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Sending...
+            </>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>

@@ -86,6 +86,43 @@
   background-color: #e86956;
 }
 
+.ctaButtonLink {
+  text-decoration: none;
+}
+
+.welcomeContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.welcomeText {
+  color: #eaeaea;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(232, 105, 86, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(232, 105, 86, 0.3);
+}
+
+.logoutButton {
+  background-color: transparent;
+  color: #eaeaea;
+  border: 1px solid #eaeaea;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #eaeaea;
+  color: #1f2937;
+}
+
 .mobileMenuButton {
   display: block;
   color: #374151;
