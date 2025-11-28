@@ -54,7 +54,7 @@ const AddOnsVipExperiences = () => {
       id: 2,
       icon: "📱",
       title: "WhatsApp",
-      description: "+1 855 252 2960",
+      description: "+91 9169235786",
     },
   ];
 
@@ -71,11 +71,14 @@ const AddOnsVipExperiences = () => {
             {/* Images Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-12">
               {experienceImages.map((item) => (
-                <div key={item.id} className="relative group">
+                <div
+                  key={item.id}
+                  className="relative group cursor-pointer transform hover:scale-105 transition-all duration-300"
+                >
                   <img
                     src={item.image}
                     alt={item.alt}
-                    className="w-full h-24 sm:h-28 lg:h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="w-full h-24 sm:h-28 lg:h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                   />
                 </div>
               ))}
@@ -102,9 +105,9 @@ const AddOnsVipExperiences = () => {
                 {faqItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center space-x-3 sm:space-x-4 bg-gray-50 p-3 sm:p-4 rounded-lg flex-1"
+                    className="flex items-center space-x-3 sm:space-x-4 bg-gray-50 p-3 sm:p-4 rounded-lg flex-1 cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-md"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0 transition-all duration-300 hover:bg-gray-700">
                       {item.icon}
                     </div>
                     <div className="min-w-0">

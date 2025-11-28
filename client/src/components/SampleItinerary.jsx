@@ -94,7 +94,7 @@ const SampleItinerary = () => {
 
   const CustomCard = ({ item }) => (
     <div className="mx-2">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 h-full cursor-pointer transform hover:scale-105 hover:opacity-95">
         <div className="relative">
           <img
             src={item.image}
@@ -118,7 +118,7 @@ const SampleItinerary = () => {
               {item.description}
             </p>
           </div>
-          <button className="w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition-colors duration-300 mt-auto">
+          <button className="w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition-all duration-300 mt-auto cursor-pointer transform hover:scale-105">
             Book Now
           </button>
         </div>
@@ -142,16 +142,15 @@ const SampleItinerary = () => {
           <Carousel
             responsive={responsive}
             autoPlay={true}
-            autoPlaySpeed={2500}
+            autoPlaySpeed={4000}
             infinite={true}
-            // showDots={true}
             arrows={true}
             swipeable={true}
             draggable={true}
-            pauseOnHover={false}
+            pauseOnHover={true}
             keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
+            customTransition="all 1s ease-in-out"
+            transitionDuration={1000}
             containerClass="carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
             dotListClass="custom-dot-list-style"
@@ -159,9 +158,9 @@ const SampleItinerary = () => {
             rtl={false}
             slidesToSlide={1}
             minimumTouchDrag={80}
-            shouldResetAutoplay={false}
+            shouldResetAutoplay={true}
             rewind={false}
-            rewindWithAnimation={false}
+            rewindWithAnimation={true}
           >
             {itineraryItems.map((item) => (
               <CustomCard key={item.id} item={item} />

@@ -114,7 +114,7 @@ const Register = () => {
             Create your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Join SRVIZ for amazing sports travel experiences
+            Join SPORTS for amazing sports travel experiences
           </p>
         </div>
 

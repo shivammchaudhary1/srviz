@@ -2,7 +2,7 @@ import React from "react";
 
 const Cards = ({ pkg }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full flex flex-col">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col cursor-pointer transform hover:scale-105">
       <img
         src={pkg.image}
         alt={pkg.title}
@@ -19,7 +19,7 @@ const Cards = ({ pkg }) => {
           <p className="text-sm sm:text-base font-bold text-orange-600 mb-2">
             {pkg.price}
           </p>
-          <button className="w-full bg-orange-600 text-white py-2 px-3 text-sm sm:text-base rounded-md hover:bg-orange-700 transition-colors duration-300">
+          <button className="w-full bg-orange-600 text-white py-2 px-3 text-sm sm:text-base rounded-md hover:bg-orange-700 transition-all duration-300 cursor-pointer transform hover:scale-105">
             Book Now
           </button>
         </div>

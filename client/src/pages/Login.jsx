@@ -98,7 +98,7 @@ const Login = () => {
             Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Welcome back to SRVIZ - Your sports travel companion
+            Welcome back to SPORTS - Your sports travel companion
           </p>
         </div>
 
