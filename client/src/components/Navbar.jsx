@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -12,10 +12,19 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const userName = useSelector(selectUserName);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navItems = ["Home", "About", "Services", "Contact"];
 
   const handleLogout = () => {
     dispatch(setLogout());
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -23,17 +32,15 @@ const Navbar = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           {/* Logo/Brand */}
-          <div className={styles.logoContainer}>
+          <Link to="/" className={styles.logoContainer}>
             <span className={styles.logo}>SPORTS</span>
-          </div>
+          </Link>
 
           {/* Navigation Items */}
           <ul className={styles.navItems}>
             {navItems.map((item) => (
               <li key={item} className={styles.navItem}>
-                <a href={`#${item.toLowerCase()}`} className={styles.navLink}>
-                  {item}
-                </a>
+                <p className={styles.navLink}>{item}</p>
               </li>
             ))}
           </ul>
@@ -57,7 +64,11 @@ const Navbar = () => {
           )}
 
           {/* Mobile Menu Button */}
-          <button className={styles.mobileMenuButton}>
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
             <svg
               className={styles.mobileMenuIcon}
               fill="none"
@@ -68,10 +79,61 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
+                d={
+                  isMobileMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
               />
             </svg>
           </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`${styles.mobileMenu} ${
+            isMobileMenuOpen ? styles.mobileMenuOpen : ""
+          }`}
+        >
+          <ul className={styles.mobileNavItems}>
+            {navItems.map((item) => (
+              <li key={item} className={styles.mobileNavItem}>
+                <p className={styles.mobileNavLink} onClick={closeMobileMenu}>
+                  {item}
+                </p>
+              </li>
+            ))}
+
+            {/* Mobile CTA/Auth Section */}
+            <li className={styles.mobileNavItem}>
+              {isAuthenticated ? (
+                <div className={styles.mobileWelcomeContainer}>
+                  <span className={styles.mobileWelcomeText}>
+                    Welcome, {userName}!
+                  </span>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      closeMobileMenu();
+                    }}
+                    className={styles.mobileLogoutButton}
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/register"
+                  className={styles.mobileCtaButtonLink}
+                  onClick={closeMobileMenu}
+                >
+                  <button className={styles.mobileCtaButton}>
+                    Plan My Trip
+                  </button>
+                </Link>
+              )}
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
