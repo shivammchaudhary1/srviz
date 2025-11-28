@@ -107,6 +107,27 @@ The application is configured for deployment on:
 - **Frontend**: Vercel Link : https://srviz-eta.vercel.app/
 - **Backend**: Render Link : https://srviz-fi62.onrender.com/
 
+## 🔧 Assumptions I Made
+
+- **Role-Based Access Assumption**  
+  I assumed the platform includes role-based access, where admin users can view all captured leads.  
+  So I designed the backend and data structure in a way that supports this behavior.
+
+- **Form Submission Does Not Require Login**  
+  Lead form submission should work without login/signup.  
+  If the user is already logged in, the system can also store their userId along with the lead.
+
+- **Design Flexibility**  
+  The exact design elements (spacing, fonts, shadows) do not need to be pixel-perfect, as per the assignment instructions.
+
+- **Basic Validation**  
+  Basic validation is enough (name/email/phone format).
+
+## ✨ Improvements If Given More Time
+
+- **Admin Dashboard UI** - Add a comprehensive admin panel to view and manage leads
+- **Enhanced Animations** - Implement smooth animations using Framer Motion for better user experience
+
 ## 📞 Contact
 
 **Shivam Chaudhary**
