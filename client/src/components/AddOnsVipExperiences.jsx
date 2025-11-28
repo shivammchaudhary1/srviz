@@ -59,55 +59,59 @@ const AddOnsVipExperiences = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-8">
+    <div className="bg-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {/* Left Section - Add-ons & VIP Experiences */}
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
               ADD-ONS & VIP EXPERIENCES
             </h2>
 
             {/* Images Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-12">
               {experienceImages.map((item) => (
                 <div key={item.id} className="relative group">
                   <img
                     src={item.image}
                     alt={item.alt}
-                    className="w-full h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="w-full h-24 sm:h-28 lg:h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                   />
                 </div>
               ))}
             </div>
 
             {/* Description Text */}
-            <div className="mb-12">
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <div className="mb-8 sm:mb-12">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
                 Elevate your Formula 1 experience with our exclusive add-ons and
                 VIP packages. From premium hospitality to behind-the-scenes
                 access, create unforgettable memories.
               </p>
-              <p className="text-gray-800 font-semibold">NIGHT ★★★</p>
+              <p className="text-gray-800 font-semibold text-sm sm:text-base">
+                NIGHT ★★★
+              </p>
             </div>
 
             {/* FAQ Section */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">FAQ</h3>
-              <div className="flex flex-col md:flex-row gap-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
+                FAQ
+              </h3>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 {faqItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center space-x-4 bg-gray-50 p-4 rounded-lg"
+                    className="flex items-center space-x-3 sm:space-x-4 bg-gray-50 p-3 sm:p-4 rounded-lg flex-1"
                   >
-                    <div className="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-xl">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-lg sm:text-xl shrink-0">
                       {item.icon}
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-800">
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-xs sm:text-sm text-gray-600 break-words">
                         {item.description}
                       </p>
                     </div>

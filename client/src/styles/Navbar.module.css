@@ -91,6 +91,17 @@
   text-decoration: none;
 }
 
+/* Hide Plan My Trip button on mobile devices */
+@media (max-width: 767px) {
+  .ctaButtonLink {
+    display: none;
+  }
+
+  .welcomeContainer {
+    display: none;
+  }
+}
+
 .welcomeContainer {
   display: flex;
   align-items: center;
@@ -126,11 +137,13 @@
 
 .mobileMenuButton {
   display: block;
-  color: #374151;
+  color: #eaeaea;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  z-index: 30;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -142,4 +155,123 @@
 .mobileMenuIcon {
   width: 1.5rem;
   height: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu Styles */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 25;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.mobileMenuOpen {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNavItems {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobileNavItem {
+  margin: 0;
+}
+
+.mobileNavLink {
+  color: #eaeaea;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.mobileNavLink:hover {
+  background-color: rgba(221, 107, 32, 0.1);
+  color: #dd6b20;
+}
+
+.mobileWelcomeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.mobileWelcomeText {
+  color: #eaeaea;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(232, 105, 86, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(232, 105, 86, 0.3);
+  text-align: center;
+}
+
+.mobileLogoutButton {
+  background-color: transparent;
+  color: #eaeaea;
+  border: 1px solid #eaeaea;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.mobileLogoutButton:hover {
+  background-color: #eaeaea;
+  color: #1f2937;
+}
+
+.mobileCtaButtonLink {
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1rem;
+}
+
+.mobileCtaButton {
+  background-color: #dd6b20;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.mobileCtaButton:hover {
+  background-color: #c2561e;
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
 }

@@ -76,10 +76,12 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-gray-50 p-8 rounded-lg shadow-lg max-w-md">
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">CONTACT</h3>
+    <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 rounded-lg shadow-lg w-full max-w-md mx-auto lg:mx-0">
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
+        CONTACT
+      </h3>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Name *
@@ -90,7 +92,7 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleInputChange}
             placeholder="Your Full Name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             disabled={isLoading}
           />
         </div>
@@ -105,7 +107,7 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="your.email@example.com"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             disabled={isLoading}
           />
         </div>
@@ -120,7 +122,7 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleInputChange}
             placeholder="+1234567890"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             disabled={isLoading}
           />
         </div>
@@ -134,8 +136,8 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleInputChange}
             placeholder="Tell us about your travel requirements..."
-            rows="4"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
+            rows="3"
+            className="w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none sm:rows-4"
             disabled={isLoading}
           />
         </div>
@@ -143,7 +145,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full py-3 px-4 rounded-md font-semibold uppercase tracking-wide transition-colors duration-300 text-white ${
+          className={`w-full py-2 sm:py-3 px-4 text-sm sm:text-base rounded-md font-semibold uppercase tracking-wide transition-colors duration-300 text-white ${
             isLoading
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-orange-500 hover:bg-orange-600"

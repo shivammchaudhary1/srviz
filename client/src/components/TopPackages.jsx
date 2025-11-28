@@ -42,16 +42,18 @@ const TopPackages = () => {
     },
   ];
   return (
-    <div className="flex justify-center mt-6">
-      <div className=" w-4/5 p-5 rounded-lg bg-gray-50">
-        <div className="flex justify-between items-center mb-5">
-          <p className="font-bold text-2xl text-gray-800">TOP PACKAGES</p>
-          <p className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer transition-colors">
+    <div className="flex justify-center mt-6 px-4">
+      <div className="w-full max-w-7xl p-4 sm:p-5 rounded-lg bg-gray-50">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-5 gap-2">
+          <p className="font-bold text-xl sm:text-2xl text-gray-800">
+            TOP PACKAGES
+          </p>
+          <p className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer transition-colors self-start sm:self-auto">
             Click to know more
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {packages.map((pkg) => (
             <Cards key={pkg.id} pkg={pkg} />
           ))}

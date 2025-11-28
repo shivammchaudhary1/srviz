@@ -127,11 +127,13 @@ const SampleItinerary = () => {
   );
 
   return (
-    <div className="flex justify-center mt-6">
-      <div className="w-4/5 p-5 rounded-lg bg-gray-50">
-        <div className="flex justify-between items-center mb-5">
-          <p className="font-bold text-2xl text-gray-800">SAMPLE ITINERARY</p>
-          <p className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer transition-colors">
+    <div className="flex justify-center mt-6 px-4">
+      <div className="w-full max-w-7xl p-4 sm:p-5 rounded-lg bg-gray-50">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-5 gap-2">
+          <p className="font-bold text-xl sm:text-2xl text-gray-800">
+            SAMPLE ITINERARY
+          </p>
+          <p className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer transition-colors self-start sm:self-auto">
             Know More &gt;
           </p>
         </div>
