@@ -28,9 +28,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.email === "" || formData.password === "") {
+    if (formData.email.trim() === "") {
       notify({
-        message: "Please fill in all required fields.",
+        message: "Email address is required. Please enter a valid email.",
+        status: "error",
+      });
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      notify({
+        message:
+          "Please enter a valid email address format (example@domain.com).",
+        status: "error",
+      });
+      return;
+    } else if (formData.password === "") {
+      notify({
+        message: "Password is required. Please enter your password.",
         status: "error",
       });
       return;
@@ -75,7 +88,10 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
+      <div className="bg-gray-900 min-h-20 h-20 w-full">
+        <Navbar />
+      </div>
+
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">

@@ -27,13 +27,41 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      formData.name === "" ||
-      formData.email === "" ||
-      formData.password === ""
-    ) {
+    if (formData.name.trim() === "") {
       notify({
-        message: "Please fill in all required fields.",
+        message: "Full name is required. Please enter your full name.",
+        status: "error",
+      });
+      return;
+    } else if (formData.email.trim() === "") {
+      notify({
+        message: "Email address is required. Please enter a valid email.",
+        status: "error",
+      });
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      notify({
+        message:
+          "Please enter a valid email address format (example@domain.com).",
+        status: "error",
+      });
+      return;
+    } else if (formData.password === "") {
+      notify({
+        message: "Password is required. Please create a secure password.",
+        status: "error",
+      });
+      return;
+    } else if (formData.password.length < 6) {
+      notify({
+        message: "Password must be at least 6 characters long for security.",
+        status: "error",
+      });
+      return;
+    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
+      notify({
+        message:
+          "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
         status: "error",
       });
       return;
@@ -77,7 +105,9 @@ const Register = () => {
 
   return (
     <>
-      <Navbar />
+      <div className="bg-gray-900 min-h-20 h-20 w-full">
+        <Navbar />
+      </div>
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
