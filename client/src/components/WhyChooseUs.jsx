@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-16 px-8">
+    <div className="bg-gray-50 py-16 px-8 w-[80%] mt-5 mx-auto">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Title and Stats */}

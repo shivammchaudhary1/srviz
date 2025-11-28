@@ -16,6 +16,9 @@ const Cards = ({ pkg }) => {
           {pkg.description}
         </p>
         <p className="text-sm font-bold text-orange-600">{pkg.price}</p>
+        <button className="mt-2 w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition-colors duration-300">
+          Book Now
+        </button>
       </div>
     </div>
   );

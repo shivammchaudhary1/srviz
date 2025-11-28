@@ -1,42 +1,44 @@
 import React from "react";
 import ContactForm from "./ContactForm.jsx";
+import {
+  addOn1,
+  addOn2,
+  addOn3,
+  addOn4,
+  addOn5,
+  addOn6,
+} from "../assets/assets.js";
 
 const AddOnsVipExperiences = () => {
   const experienceImages = [
     {
       id: 1,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=Experience+1",
+      image: addOn1,
       alt: "VIP Experience 1",
     },
     {
       id: 2,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=Experience+2",
+      image: addOn2,
       alt: "VIP Experience 2",
     },
     {
       id: 3,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=Car+Experience",
+      image: addOn3,
       alt: "Car Experience",
     },
     {
       id: 4,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=Premium+View",
+      image: addOn4,
       alt: "Premium View",
     },
     {
       id: 5,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=Meet+Greet",
+      image: addOn5,
       alt: "Meet & Greet",
     },
     {
       id: 6,
-      image:
-        "https://via.placeholder.com/200x150/4A5568/FFFFFF?text=VIP+Access",
+      image: addOn6,
       alt: "VIP Access",
     },
   ];

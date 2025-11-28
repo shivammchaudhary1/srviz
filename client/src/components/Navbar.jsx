@@ -23,17 +23,15 @@ const Navbar = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           {/* Logo/Brand */}
-          <div className={styles.logoContainer}>
+          <Link to="/" className={styles.logoContainer}>
             <span className={styles.logo}>SPORTS</span>
-          </div>
+          </Link>
 
           {/* Navigation Items */}
           <ul className={styles.navItems}>
             {navItems.map((item) => (
               <li key={item} className={styles.navItem}>
-                <a href={`#${item.toLowerCase()}`} className={styles.navLink}>
-                  {item}
-                </a>
+                <p className={styles.navLink}>{item}</p>
               </li>
             ))}
           </ul>

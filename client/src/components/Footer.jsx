@@ -45,16 +45,20 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold text-orange-500 mb-4">SRVIZ</h3>
+            <h3 className="text-2xl font-bold text-orange-500 mb-4">SPORTS</h3>
             <p className="text-gray-300 text-sm mb-6 leading-relaxed">
               Your ultimate destination for premium sports travel experiences.
               We create unforgettable memories through world-class events and
               VIP access.
             </p>
             <div className="space-y-2">
-              <p className="text-gray-300 text-sm">📧 info@srviz.com</p>
-              <p className="text-gray-300 text-sm">📞 +1 (855) 252-2960</p>
-              <p className="text-gray-300 text-sm">📍 New York, NY 10001</p>
+              <p className="text-gray-300 text-sm">
+                📧 shivamchaudhary75@gmail.com
+              </p>
+              <p className="text-gray-300 text-sm">📞 +91 9169235786</p>
+              <p className="text-gray-300 text-sm">
+                📍 Lucknow, Uttar Pradesh India
+              </p>
             </div>
           </div>
 
@@ -121,7 +125,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm"
               />
-              <button className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors text-sm font-medium">
+              <button className="bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors text-sm font-medium">
                 Subscribe
               </button>
             </div>
@@ -162,8 +166,8 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center mt-6 pt-6 border-t border-gray-700">
             <p className="text-gray-400 text-sm">
-              © {currentYear} SRVIZ. All rights reserved. | Designed with ❤️ for
-              sports enthusiasts.
+              © {currentYear} SPORTS. All rights reserved. | Designed with ❤️
+              for sports enthusiasts.
             </p>
           </div>
         </div>
