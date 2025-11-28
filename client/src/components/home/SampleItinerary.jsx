@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import styles from "../styles/SampleItinerary.module.css";
+import styles from "../../styles/home/SampleItinerary.module.css";
 import {
   adventureSports,
   cityTour,
@@ -11,7 +11,7 @@ import {
   spaAndWellness,
   sunsetCruise,
   vipMember,
-} from "../assets/assets";
+} from "../../assets/assets";
 
 const SampleItinerary = () => {
   const itineraryItems = [

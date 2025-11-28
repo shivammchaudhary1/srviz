@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { notify } from "../utils/notify";
-import { addLeads } from "../redux/slices/leadSlice";
+import { notify } from "../../utils/notify";
+import { addLeads } from "../../redux/slices/leadSlice";
 
 const ContactForm = () => {
   const dispatch = useDispatch();

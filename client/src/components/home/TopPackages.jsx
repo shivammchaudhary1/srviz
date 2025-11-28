@@ -4,7 +4,7 @@ import {
   adventureTour2,
   adventureTour3,
   adventureTour4,
-} from "../assets/assets.js";
+} from "../../assets/assets.js";
 import Cards from "./Cards.jsx";
 
 const TopPackages = () => {

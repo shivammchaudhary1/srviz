@@ -1,6 +1,6 @@
 import React from "react";
-import { F1Racing } from "../assets/assets";
-import styles from "../styles/SecondarySection.module.css";
+import { F1Racing } from "../../assets/assets";
+import styles from "../../styles/home/SecondarySection.module.css";
 
 const SecondarySection = () => {
   return (

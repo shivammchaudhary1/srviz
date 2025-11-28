@@ -1,5 +1,5 @@
 import React from "react";
-import ContactForm from "./ContactForm.jsx";
+import ContactForm from "../forms/ContactForm.jsx";
 import {
   addOn1,
   addOn2,
@@ -7,7 +7,7 @@ import {
   addOn4,
   addOn5,
   addOn6,
-} from "../assets/assets.js";
+} from "../../assets/assets.js";
 
 const AddOnsVipExperiences = () => {
   const experienceImages = [

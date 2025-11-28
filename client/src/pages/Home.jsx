@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/common/Navbar";
 import { heroImage } from "../assets/assets.js";
-import styles from "../styles/Home.module.css";
-import SecondarySection from "../components/SecondarySection.jsx";
-import TopPackages from "../components/TopPackages.jsx";
-import WhyChooseUs from "../components/WhyChooseUs.jsx";
-import SampleItinerary from "../components/SampleItinerary.jsx";
-import AddOnsVipExperiences from "../components/AddOnsVipExperiences.jsx";
-import Footer from "../components/Footer.jsx";
+import styles from "../styles/home/Home.module.css";
+import SecondarySection from "../components/home/SecondarySection.jsx";
+import TopPackages from "../components/home/TopPackages.jsx";
+import WhyChooseUs from "../components/home/WhyChooseUs.jsx";
+import SampleItinerary from "../components/home/SampleItinerary.jsx";
+import AddOnsVipExperiences from "../components/home/AddOnsVipExperiences.jsx";
+import Footer from "../components/common/Footer.jsx";
 
 const Home = () => {
   return (

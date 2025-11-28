@@ -5,8 +5,8 @@ import {
   selectIsAuthenticated,
   selectUserName,
   setLogout,
-} from "../redux/slices/authSlice";
-import styles from "../styles/Navbar.module.css";
+} from "../../redux/slices/authSlice";
+import styles from "../../styles/navbar/Navbar.module.css";
 
 const Navbar = () => {
   const dispatch = useDispatch();
