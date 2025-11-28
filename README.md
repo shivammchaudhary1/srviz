@@ -22,6 +22,114 @@ This is a comprehensive sports travel package platform that allows users to disc
 - **bcrypt** - Password hashing
 - **dotenv** - Environment variable management
 
+## 📁 Project Structure
+
+### Overview
+
+This project follows a **monorepo architecture** with clear separation between frontend and backend, promoting maintainability, scalability, and developer experience.
+
+```
+srviz/
+├── client/                          # Frontend React Application
+│   ├── public/                      # Static assets served directly
+│   ├── src/
+│   │   ├── App.jsx                  # Main App component with global providers
+│   │   ├── main.jsx                 # React app entry point
+│   │   ├── appRoutes/
+│   │   │   └── AllRoutes.jsx        # Centralized routing configuration
+│   │   ├── assets/                  # Static resources management
+│   │   │   ├── assets.js            # Asset imports/exports hub
+│   │   │   ├── icons/               # SVG icons collection
+│   │   │   └── Images/              # Image assets by category
+│   │   │       ├── addons/          # Add-on service images
+│   │   │       └── sample-itinerary/ # Sample trip images
+│   │   ├── components/              # Reusable UI components
+│   │   │   ├── common/              # Shared components (Navbar, Footer)
+│   │   │   ├── forms/               # Form-related components
+│   │   │   └── home/                # Homepage-specific components
+│   │   ├── config/
+│   │   │   └── config.js            # App-wide configuration
+│   │   ├── pages/                   # Route-level page components
+│   │   │   ├── Home.jsx             # Landing page
+│   │   │   ├── Login.jsx            # Authentication page
+│   │   │   └── Register.jsx         # User registration page
+│   │   ├── redux/                   # State management
+│   │   │   ├── store.js             # Redux store setup
+│   │   │   └── slices/              # Feature-based state slices
+│   │   │       ├── authSlice.js     # Authentication state
+│   │   │       ├── leadSlice.js     # Lead management state
+│   │   │       └── notificationSlice.js # Toast notifications state
+│   │   ├── styles/                  # Styling organization
+│   │   │   ├── global/              # Global CSS styles
+│   │   │   ├── home/                # Homepage component styles
+│   │   │   └── navbar/              # Navigation component styles
+│   │   └── utils/
+│   │       └── notify.js            # Utility functions for notifications
+│   ├── eslint.config.js             # Code linting rules
+│   ├── index.html                   # HTML template
+│   ├── package.json                 # Frontend dependencies
+│   ├── vite.config.js               # Vite bundler configuration
+│   └── vercel.json                  # Deployment configuration
+│
+└── server/                          # Backend Node.js Application
+    ├── src/
+    │   ├── server.js                # Application entry point
+    │   ├── config/                  # Configuration modules
+    │   │   ├── db/
+    │   │   │   └── db.js            # MongoDB connection setup
+    │   │   ├── envs/
+    │   │   │   └── env.js           # Environment variables handler
+    │   │   ├── express/
+    │   │   │   └── init.js          # Express server initialization
+    │   │   ├── helper/
+    │   │   │   └── helperFunctions.js # Shared utility functions
+    │   │   └── libraries/           # Third-party integrations
+    │   │       ├── bcrypt.js        # Password hashing utilities
+    │   │       └── jwt.js           # JWT token management
+    │   ├── controllers/             # Business logic handlers
+    │   │   ├── auth.controller.js   # Authentication operations
+    │   │   └── lead.controller.js   # Lead management operations
+    │   ├── middleware/              # Custom Express middleware
+    │   │   └── auth.middleware.js   # Authentication verification
+    │   ├── models/                  # MongoDB data schemas
+    │   │   ├── lead.model.js        # Lead data structure
+    │   │   └── user.model.js        # User data structure
+    │   └── routes/                  # API endpoint definitions
+    │       ├── auth.routes.js       # Authentication endpoints
+    │       ├── lead.routes.js       # Lead management endpoints
+    │       └── main.routes.js       # Route aggregation
+    └── package.json                 # Backend dependencies
+```
+
+### 🏗️ Architecture Design Decisions
+
+#### **Monorepo Structure**
+
+- **Single Repository** - Both frontend and backend in one repo for easier development and deployment coordination
+- **Clear Separation** - Distinct `client/` and `server/` directories prevent code mixing and maintain clean boundaries
+
+#### **Frontend Architecture (React + Vite)**
+
+- **Component-Based Design** - Organized by functionality (`common/`, `forms/`, `home/`) for better reusability
+- **Feature-First Organization** - Redux slices and styles grouped by features rather than file types
+- **Asset Management** - Centralized asset handling with categorized image organization
+- **Modern Build Tools** - Vite for fast development and optimized production builds
+
+#### **Backend Architecture (Node.js + Express)**
+
+- **MVC Pattern** - Clear separation of Models, Controllers, and Routes for maintainable code
+- **Configuration First** - Centralized config management for different environments
+- **Middleware Architecture** - Modular middleware for authentication, validation, and error handling
+- **Library Abstraction** - Wrapper modules for third-party libraries (bcrypt, JWT) for easier testing and updates
+
+#### **Why This Structure Works**
+
+1. **Scalability** - Easy to add new features without restructuring existing code
+2. **Maintainability** - Clear separation of concerns makes debugging and updates straightforward
+3. **Developer Experience** - Logical organization reduces cognitive load when navigating the codebase
+4. **Team Collaboration** - Well-defined boundaries prevent merge conflicts in team environments
+5. **Deployment Flexibility** - Frontend and backend can be deployed independently to different platforms
+
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
